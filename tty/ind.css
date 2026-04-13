@@ -1,0 +1,721 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0c0a0a;
+    font-family: 'Inter', sans-serif;
+    color: #e2dfd7;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* ============================================
+   ШАПКА (HEADER)
+   ============================================ */
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 8, 7, 0.95);
+    backdrop-filter: blur(12px);
+    z-index: 1000;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(184, 122, 75, 0.3);
+    transition: all 0.3s ease;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+}
+
+.logo a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #ebd5bc;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo a i {
+    color: #b87a4b;
+    font-size: 1.4rem;
+}
+
+.logo a:hover {
+    color: #b87a4b;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav ul li a {
+    color: #d4c9be;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+    padding: 0.5rem 0;
+    position: relative;
+    cursor: pointer;
+}
+
+.main-nav ul li a:hover {
+    color: #b87a4b;
+}
+
+.main-nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #b87a4b;
+    transition: width 0.2s ease;
+}
+
+.main-nav ul li a:hover::after {
+    width: 100%;
+}
+
+.mobile-menu-btn {
+    display: none;
+    font-size: 1.5rem;
+    color: #d4c9be;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.mobile-menu-btn:hover {
+    color: #b87a4b;
+}
+
+/* ============================================
+   ОБЛОЖКА КНИГИ
+   ============================================ */
+
+.book-cover-full {
+    min-height: 100vh;
+    background: radial-gradient(circle at 30% 20%, #1a1410, #050302);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 6rem 2rem 3rem 2rem;
+    border-bottom: 2px solid #6f4e3a;
+    overflow: hidden;
+    scroll-margin-top: 80px;
+    margin-top: 0;
+}
+
+.book-cover-full::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" opacity="0.06"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="3"/></filter><rect width="100%" height="100%" filter="url(%23noise)"/></svg>');
+    background-repeat: repeat;
+    pointer-events: none;
+}
+
+.cover-decoration {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    background: linear-gradient(90deg, rgba(100, 60, 40, 0.15), transparent);
+    pointer-events: none;
+}
+
+.cover-decoration.left {
+    left: 0;
+}
+
+.cover-decoration.right {
+    right: 0;
+    transform: rotate(180deg);
+}
+
+.cover-content {
+    text-align: center;
+    max-width: 800px;
+    padding: 3rem 2rem;
+    background: rgba(10, 8, 7, 0.6);
+    backdrop-filter: blur(12px);
+    border-radius: 48px;
+    border: 1px solid rgba(180, 120, 80, 0.4);
+    box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 200, 0.05);
+    z-index: 2;
+}
+
+.cover-badge {
+    display: inline-block;
+    font-size: 0.8rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #bc9a7a;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.5rem 1.5rem;
+    border-radius: 40px;
+    border: 1px solid #7e5a42;
+    margin-bottom: 2rem;
+}
+
+.cover-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: #f3e9dc;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    margin-bottom: 1.5rem;
+}
+
+.cover-divider {
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.cover-divider i {
+    font-size: 2rem;
+    color: #b87a4b;
+}
+
+.cover-tagline {
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #d4bca0;
+    margin-bottom: 0.75rem;
+}
+
+.cover-sub {
+    font-size: 0.95rem;
+    color: #9b765b;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+.cover-icon-group {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 1.3rem;
+    color: #8b6348;
+    margin-top: 1.5rem;
+}
+
+.obloshka {
+    margin: 2rem auto 1rem auto;
+    max-width: 340px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.6);
+    mask-image: radial-gradient(circle at center, black 65%, transparent 98%);
+    -webkit-mask-image: radial-gradient(circle at center, black 65%, transparent 98%);
+}
+
+.obloshka img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+
+.obloshka img:hover {
+    transform: scale(1.05);
+}
+
+/* ============================================
+   АННОТАЦИЯ
+   ============================================ */
+
+.annotation-block {
+    background: #0f0c0a;
+    padding: 5rem 0;
+    border-bottom: 1px solid #2a201a;
+    scroll-margin-top: 80px;
+}
+
+.annotation-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(20, 15, 12, 0.7);
+    backdrop-filter: blur(4px);
+    border-radius: 28px;
+    padding: 3rem;
+    border-left: 4px solid #b87a4b;
+}
+
+.annotation-inner p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: #e2d7ce;
+}
+
+.quote-block {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+    padding: 1.5rem 0 1.5rem 1.5rem;
+    border-left: 3px solid #b87a4b;
+}
+
+.quote-block i {
+    font-size: 1.8rem;
+    color: #b87a4b;
+    opacity: 0.6;
+}
+
+.quote-block p {
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    margin-bottom: 0;
+    color: #efcfb0;
+}
+
+.author-sign {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    text-align: right;
+    margin-top: 2rem;
+    font-size: 1rem;
+    color: #aa886a;
+}
+
+/* ============================================
+   ОГЛАВЛЕНИЕ — В РАМОЧКАХ (КАРТОЧКАМИ)
+   ============================================ */
+
+section {
+    padding: 5rem 0;
+    border-bottom: 1px solid rgba(100, 70, 50, 0.3);
+    scroll-margin-top: 80px;
+}
+
+.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin-bottom: 2.5rem;
+    border-left: 4px solid #b87a4b;
+    padding-left: 1.2rem;
+}
+
+.toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.toc-item {
+    background: #181310;
+    border-radius: 20px;
+    padding: 1.5rem;
+    transition: 0.25s;
+    border: 1px solid #4a3628;
+    display: block;
+    text-decoration: none;
+    color: #e2dfd7;
+    cursor: pointer;
+}
+
+.toc-item:hover {
+    border-color: #b87a4b;
+    background: #201b16;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.toc-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    color: #b87a4b;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.toc-title {
+    font-weight: 400;
+    font-size: 1rem;
+    color: #d4c9be;
+    display: block;
+}
+
+/* ============================================
+   СТРАНИЦЫ ГЛАВ
+   ============================================ */
+
+.chapter-page {
+    min-height: 100vh;
+    background: radial-gradient(circle at 30% 20%, #1a1410, #050302);
+    padding: 5rem 0 3rem 0;
+}
+
+.chapter-full {
+    background: rgba(18, 16, 14, 0.95);
+    backdrop-filter: blur(2px);
+    border-radius: 32px;
+    padding: 3rem;
+    border: 1px solid #3d2c22;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.chapter-full h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #ebd5bc;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #b87a4b;
+    display: inline-block;
+}
+
+.chapter-full p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    color: #d4c9be;
+    text-align: justify;
+}
+
+/* ============================================
+   НАВИГАЦИЯ МЕЖДУ ГЛАВАМИ
+   ============================================ */
+
+.chapter-navigation {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #3d2c22;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.nav-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: #b87a4b;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: 0.2s;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.7rem 1.5rem;
+    border-radius: 40px;
+    border: 1px solid #5c3f2e;
+}
+
+.nav-back:hover {
+    color: #e8c49a;
+    border-color: #b87a4b;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.nav-arrows {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-prev, .nav-next {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #b87a4b;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: 0.2s;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.7rem 1.5rem;
+    border-radius: 40px;
+    border: 1px solid #5c3f2e;
+}
+
+.nav-prev:hover, .nav-next:hover {
+    color: #e8c49a;
+    border-color: #b87a4b;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.nav-prev.disabled, .nav-next.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* ============================================
+   ПОДВАЛ
+   ============================================ */
+
+footer {
+    text-align: center;
+    padding: 2.5rem;
+    font-size: 0.8rem;
+    color: #6a5a4e;
+    border-top: 1px solid #241e19;
+    background: #0a0807;
+}
+
+.footer-tagline {
+    margin-top: 0.8rem;
+}
+
+/* ============================================
+   ПОЛОСА ПРОКРУТКИ
+   ============================================ */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1512;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #b87a4b;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #d49c6c;
+}
+
+/* ============================================
+   АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ
+   ============================================ */
+
+@media (max-width: 780px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+    
+    /* Шапка */
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .main-nav {
+        position: fixed;
+        top: 65px;
+        left: -100%;
+        width: 80%;
+        max-width: 280px;
+        height: calc(100vh - 65px);
+        background: rgba(10, 8, 7, 0.98);
+        backdrop-filter: blur(12px);
+        transition: left 0.3s ease;
+        border-right: 1px solid #3d2c22;
+        padding: 2rem 0;
+        z-index: 999;
+    }
+    
+    .main-nav.active {
+        left: 0;
+    }
+    
+    .main-nav ul {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 0 2rem;
+    }
+    
+    .main-nav ul li a {
+        font-size: 1.1rem;
+        display: block;
+        padding: 0.5rem 0;
+    }
+    
+    .main-nav ul li a::after {
+        display: none;
+    }
+    
+    .header-container {
+        padding: 0 1.5rem;
+        gap: 1rem;
+    }
+    
+    .logo a {
+        font-size: 1.1rem;
+    }
+    
+    .logo a i {
+        font-size: 1.1rem;
+    }
+    
+    /* Отступы для мобильных */
+    .book-cover-full {
+        scroll-margin-top: 70px;
+        padding: 5rem 1rem 2rem 1rem;
+    }
+    
+    .annotation-block {
+        scroll-margin-top: 70px;
+        padding: 3rem 0;
+    }
+    
+    section {
+        scroll-margin-top: 70px;
+        padding: 3rem 0;
+    }
+    
+    /* Обложка */
+    .cover-title {
+        font-size: 2.5rem;
+    }
+    
+    .cover-content {
+        padding: 2rem 1.2rem;
+    }
+    
+    .cover-badge {
+        font-size: 0.65rem;
+        letter-spacing: 3px;
+        padding: 0.3rem 1rem;
+    }
+    
+    .cover-tagline {
+        font-size: 0.85rem;
+        letter-spacing: 2px;
+    }
+    
+    .cover-icon-group {
+        gap: 1rem;
+        font-size: 1rem;
+    }
+    
+    /* Оглавление */
+    .section-title {
+        font-size: 1.6rem;
+    }
+    
+    .toc-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .toc-item {
+        padding: 1rem 1.2rem;
+    }
+    
+    .toc-num {
+        font-size: 1rem;
+    }
+    
+    .toc-title {
+        font-size: 0.9rem;
+    }
+    
+    /* Аннотация */
+    .annotation-inner {
+        padding: 1.5rem;
+    }
+    
+    .annotation-inner p {
+        font-size: 0.95rem;
+    }
+    
+    .quote-block p {
+        font-size: 0.95rem;
+    }
+    
+    /* Страницы глав */
+    .chapter-page {
+        padding: 4rem 0 2rem 0;
+    }
+    
+    .chapter-full {
+        padding: 1.5rem;
+    }
+    
+    .chapter-full h1 {
+        font-size: 1.6rem;
+    }
+    
+    .chapter-full p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    /* Навигация */
+    .chapter-navigation {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .nav-back, .nav-prev, .nav-next {
+        justify-content: center;
+        padding: 0.6rem 1rem;
+    }
+    
+    .nav-arrows {
+        justify-content: center;
+    }
+    
+    footer {
+        padding: 1.5rem;
+    }
+}
+
+/* ============================================
+   АНИМАЦИИ
+   ============================================ */
+
+.book-cover-full, .annotation-block, section {
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cover-divider i, .logo a i {
+    filter: drop-shadow(0 0 4px rgba(184, 122, 75, 0.5));
+}
+
+.toc-item, .nav-back, .nav-prev, .nav-next, .btn {
+    cursor: pointer;
+}
